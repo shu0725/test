@@ -21,8 +21,7 @@ export default defineConfig({
         'react',
         'react/jsx-runtime',
         // '@mui/material/styles', // Externalize MUI theme-related packages
-        // '@mui/system',
-        // '@mui/styles',
+        '@mui/styles',
         // '@mui/styled-engine-sc',
         '@mui/x-date-pickers-pro',
       ],
