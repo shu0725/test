@@ -23,9 +23,9 @@ export default defineConfig({
         '@mui/material/styles', // Externalize MUI theme-related packages
         '@mui/system',
         '@mui/styles',
-        '@mui/styled-engine-sc',
-        '@mui/material',
-        '@mui/x-date-pickers-pro',
+        // '@mui/styled-engine-sc',
+        // '@mui/material',
+        // '@mui/x-date-pickers-pro',
       ],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
