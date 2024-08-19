@@ -24,6 +24,7 @@ export default defineConfig({
         '@mui/material/styles', // Externalize MUI theme-related packages
         '@mui/system',
         '@mui/styles',
+        '@mui/styled-engine-sc',
       ],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
@@ -39,6 +40,10 @@ export default defineConfig({
       output: {
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: '[name].js',
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
       },
     },
   },
