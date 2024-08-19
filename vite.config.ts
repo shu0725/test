@@ -23,6 +23,7 @@ export default defineConfig({
         '@mui/material/styles', // Externalize MUI theme-related packages
         '@mui/system',
         '@mui/styles',
+        '@mui/styled-engine-sc',
         '@mui/material',
         '@mui/x-date-pickers-pro',
       ],
