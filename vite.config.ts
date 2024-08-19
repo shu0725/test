@@ -25,7 +25,6 @@ export default defineConfig({
         '@mui/system',
         '@mui/styles',
         '@mui/styled-engine',
-        '@mui/x-date-pickers',
         '@mui/x-date-pickers-pro/MultiInputDateTimeRangeField',
       ],
       input: Object.fromEntries(
