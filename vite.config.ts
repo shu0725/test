@@ -19,6 +19,7 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'react',
+        'react-dom',
         'react/jsx-runtime',
         '@mui/material/styles', // Externalize MUI theme-related packages
         '@mui/system',
