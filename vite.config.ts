@@ -9,7 +9,7 @@ import * as path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), dts()],
   build: {
     copyPublicDir: false,
     lib: {
@@ -19,13 +19,11 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'react',
-        'react-dom',
-        '@mui/**/*.{ts,tsx,js}',
-        // '@mui/material',
-        // '@mui/x-date-pickers/**/*.{ts,tsx,js}',
-        // '@mui/x-date-pickers-pro/*.{ts,tsx,js}',
-        // '@mui/x-date-pickers/LocalizationProvider',
-        // '@mui/x-date-pickers/DatePicker',
+        'react/jsx-runtime',
+        '@mui/material',
+        '@mui/material/styles', // Externalize MUI theme-related packages
+        '@mui/system',
+        '@mui/styles',
       ],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
@@ -39,13 +37,6 @@ export default defineConfig({
         ]),
       ),
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          '@mui/material': 'MUI',
-          '@mui/x-date-pickers': 'MuiDatePickers',
-          '@mui/x-date-pickers-pro': 'MuiDatePickersPro',
-        },
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: '[name].js',
       },
@@ -66,6 +57,7 @@ export default defineConfig({
       '@components': path.resolve(__dirname, 'src/components'),
       '@layout': path.resolve(__dirname, 'src/layout'),
       '@pages': path.resolve(__dirname, 'src/pages'),
+      '@lib': path.resolve(__dirname, './lib'),
     },
   },
 });

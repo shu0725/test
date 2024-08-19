@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '@i18n/index';
 import { getDateRange } from '@utils/date';
 // material-ue
-import { FormControl, Button, useTheme, ThemeProvider } from '@mui/material';
+import { FormControl, Button } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -15,7 +15,6 @@ import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/zh-tw';
 import 'dayjs/locale/en';
 import 'dayjs/locale/vi';
-// import ThemeCustomization from '@themes/index';
 
 export function SearchDateTimeRangePicker({
   showShortcutsItems = true,
@@ -41,8 +40,6 @@ export function SearchDateTimeRangePicker({
   sysTime: string;
 }) {
   const { t } = useTranslation();
-  const theme = useTheme();
-  console.log('Current theme:', theme);
   // const globalState = useSelector((state) => state.global);
   // const { sysTime } = globalState;
   const [lang, setLang] = useState<string | undefined>(i18n.resolvedLanguage);
@@ -157,7 +154,7 @@ export function SearchDateTimeRangePicker({
         onChange={handleStartChange}
       />
     );
-  }, [theme, startValue, endValue, handleStartChange]);
+  }, [startValue, endValue, handleStartChange]);
   const endComp = useCallback(() => {
     return (
       <MemoizedCustomizedDateTimePicker
