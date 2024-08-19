@@ -20,9 +20,10 @@ export default defineConfig({
       external: [
         'react',
         'react/jsx-runtime',
-        // '@mui/material/styles', // Externalize MUI theme-related packages
+        '@mui/material/styles', // Externalize MUI theme-related packages
+        // '@mui/system',
         '@mui/styles',
-        // '@mui/styled-engine-sc',
+        '@mui/styled-engine-sc',
         '@mui/x-date-pickers-pro',
       ],
       input: Object.fromEntries(
