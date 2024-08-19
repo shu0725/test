@@ -20,7 +20,6 @@ export default defineConfig({
       external: [
         'react',
         'react/jsx-runtime',
-        'react-i18next',
         '@mui/material/styles', // Externalize MUI theme-related packages
         '@mui/system',
         '@mui/styles',
