@@ -20,12 +20,11 @@ export default defineConfig({
       external: [
         'react',
         'react/jsx-runtime',
-        '@mui/material/styles', // Externalize MUI theme-related packages
-        '@mui/system',
-        '@mui/styles',
+        // '@mui/material/styles', // Externalize MUI theme-related packages
+        // '@mui/system',
+        // '@mui/styles',
         // '@mui/styled-engine-sc',
-        // '@mui/material',
-        // '@mui/x-date-pickers-pro',
+        '@mui/x-date-pickers-pro',
       ],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
