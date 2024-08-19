@@ -42,7 +42,10 @@ export function SearchDateTimeRangePicker({
   const { t } = useTranslation();
   // const globalState = useSelector((state) => state.global);
   // const { sysTime } = globalState;
-  const [lang, setLang] = useState<string | undefined>(i18n.resolvedLanguage);
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
+  const [lang, setLang] = useState<string | undefined>(currentLanguage);
   const [startValue, setstartValue] = useState<Dayjs | null>(null);
   const [endValue, setendValue] = useState<Dayjs | null>(null);
   const shortcutsItems = useMemo(
@@ -113,9 +116,9 @@ export function SearchDateTimeRangePicker({
       setValue(endKey, dayjs(endValue).format('YYYY-MM-DD HH:mm:ss'));
     }
   }, [startValue, endValue]);
-
+  console.error('aaa', currentLanguage);
   useEffect(() => {
-    switch (i18n.resolvedLanguage) {
+    switch (currentLanguage) {
       case 'en':
         setLang('en');
         break;
@@ -126,7 +129,7 @@ export function SearchDateTimeRangePicker({
         setLang('zh-tw');
         break;
     }
-  }, [i18n.resolvedLanguage]);
+  }, [currentLanguage]);
 
   const MemoizedCustomizedDateTimePicker = React.memo(CustomizedDateTimePicker);
 
