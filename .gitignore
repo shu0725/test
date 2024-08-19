@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+dist
+*.local
+node_modules/*
+.env
+dev-dist
+yarn-error.log
+/config/*
+public/icons/*
+*storybook.log
+storybook-static
