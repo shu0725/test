@@ -25,6 +25,8 @@ export default defineConfig({
         '@mui/system',
         '@mui/styles',
         '@mui/styled-engine-sc',
+        '@emotion/react',
+        '@emotion/styled',
       ],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
