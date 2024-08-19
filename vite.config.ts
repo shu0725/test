@@ -26,7 +26,7 @@ export default defineConfig({
         '@mui/styles',
         '@mui/styled-engine',
         '@mui/x-date-pickers',
-        '@mui/x-date-pickers-pro',
+        '@mui/x-date-pickers-pro/MultiInputDateTimeRangeField',
       ],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
