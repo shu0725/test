@@ -25,6 +25,7 @@ export default defineConfig({
         '@mui/system',
         '@mui/styles',
         '@emotion/styled',
+        'react-i18next',
       ],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input

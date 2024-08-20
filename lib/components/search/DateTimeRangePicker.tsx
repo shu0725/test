@@ -44,7 +44,6 @@ export function SearchDateTimeRangePicker({
   // const { sysTime } = globalState;
   const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
-
   const [lang, setLang] = useState<string | undefined>(currentLanguage);
   const [startValue, setstartValue] = useState<Dayjs | null>(null);
   const [endValue, setendValue] = useState<Dayjs | null>(null);
