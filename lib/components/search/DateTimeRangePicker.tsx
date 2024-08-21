@@ -117,6 +117,8 @@ export function SearchDateTimeRangePicker({
   }, [startValue, endValue]);
   console.error('aaa', currentLanguage);
   useEffect(() => {
+    console.error('bbb', currentLanguage);
+
     switch (currentLanguage) {
       case 'en':
         setLang('en');
