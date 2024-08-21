@@ -11,5 +11,7 @@
   "start": "開始",
   "end": "結束",
   "confirm": "確認",
-  "cancel": "取消"
+  "cancel": "取消",
+  "created_at": "新增時間",
+  "updated_at": "更新時間"
 }
