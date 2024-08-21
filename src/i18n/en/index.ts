@@ -38,60 +38,6 @@ import adminClearCache from './adminClearCache.json';
 import adminLanguage from './adminLanguage.json';
 import profileUser from './profileUser.json';
 
-function en() {
-  return {
-    translation: {
-      login,
-      dashboard,
-      menu,
-      lang, // 語系
-      sys: system, // 系統
-      vt: validation, // 驗證
-      cp: compoent, // 元件
-      //user
-      userAgent,
-      userOnline,
-      userMember,
-      userMoneyflow,
-      userLoginLog,
-      userCreditflow,
-      userGroup,
-      //game
-      gameManage,
-      gameRoom,
-      gameBet,
-      gameBetRc: gameBetRecord,
-      gameDonate: gameDonate,
-      //risk
-      riskManage,
-      riskHedging,
-      riskAnalysis,
-      //report
-      report,
-      reportOperation,
-      reportAgent,
-      reportUser,
-      reportGame,
-      reportDonate,
-      //site
-      siteConfig,
-      siteBanner,
-      siteNotice,
-      //admin
-      adminNav,
-      adminUser,
-      adminRole,
-      adminAclog: adminActionlog,
-      adminLoginLog,
-      adminClearCache,
-      adminLanguage,
-
-      //other
-      profileUser,
-    },
-  };
-}
-export { en };
 export default {
   login,
   dashboard,
