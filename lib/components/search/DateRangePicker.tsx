@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import i18n from '@i18n/index';
 import { getDateRange, dayType } from '@utils/date';
 // material-ui
 import { FormControl } from '@mui/material';
@@ -21,6 +20,7 @@ import 'dayjs/locale/zh-tw';
 import 'dayjs/locale/en';
 import 'dayjs/locale/vi';
 import React from 'react';
+import useMuiLang from '@src/hooks/useMuiLang';
 
 const SearchDateRangePicker = ({
   placeholder,
@@ -44,8 +44,7 @@ const SearchDateRangePicker = ({
   sysTime: string;
 }) => {
   const { t } = useTranslation();
-
-  const [lang, setLang] = useState<string | undefined>(i18n.resolvedLanguage);
+  const [muiLang] = useMuiLang();
   const [changeImportance, setChangeImportance] =
     useState<PickerShortcutChangeImportance>('accept');
   const [dateValue, setdateValue] = useState<DateRange<Dayjs>>([dayjs(start), dayjs(end)]);
@@ -64,35 +63,25 @@ const SearchDateRangePicker = ({
       return [date[0], date[1]];
     },
   }));
+
   const fcSetValues = (dateAry: Dayjs[]) => {
     setdateValue([dateAry[0], dateAry[1]]);
     setValue(startKey, dateAry[0].format('YYYY-MM-DD'));
     setValue(endKey, dateAry[1].format('YYYY-MM-DD'));
   };
+
   useEffect(() => {
     if (defaultType === 'null') return;
     const dateAry = getDateRange(sysTime, defaultType);
     fcSetValues(dateAry);
   }, []);
-  useEffect(() => {
-    switch (i18n.resolvedLanguage) {
-      case 'en':
-        setLang('en');
-        break;
-      case 'vi':
-        setLang('vi');
-        break;
-      default:
-        setLang('zh-tw');
-        break;
-    }
-  }, [i18n.resolvedLanguage]);
+
   return (
     <FormControl fullWidth>
       <LocalizationProvider
         dateAdapter={AdapterDayjs}
-        adapterLocale={lang}
-        localeText={{ okButtonLabel: t('sys.confirm'), cancelButtonLabel: t('sys.cancel') }}
+        adapterLocale={muiLang}
+        localeText={{ okButtonLabel: t('lib.confirm'), cancelButtonLabel: t('lib.cancel') }}
       >
         <DateRangePicker
           format="YYYY-MM-DD"
