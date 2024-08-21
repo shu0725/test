@@ -5,7 +5,7 @@ import SearchDateTimeRangePicker from './components/search/DateTimeRangePicker';
 
 export { Input } from './components/Input';
 export { Label } from './components/Label';
-export type { SearchDateTimeRangePicker };
+export { SearchDateTimeRangePicker };
 export { Android12Switch } from './components/switch/CustomizedSwitches';
 export { libEn };
 export { libZhTw };
