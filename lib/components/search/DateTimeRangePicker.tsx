@@ -16,7 +16,7 @@ import 'dayjs/locale/zh-tw';
 import 'dayjs/locale/en';
 import 'dayjs/locale/vi';
 
-export function SearchDateTimeRangePicker({
+const SearchDateTimeRangePicker = ({
   showShortcutsItems = true,
   views = ['year', 'month', 'day', 'hours', 'minutes', 'seconds'],
   format = 'YYYY-MM-DD HH:mm:ss',
@@ -38,7 +38,7 @@ export function SearchDateTimeRangePicker({
   endKey: string;
   setValue: (key: string, value: string) => void;
   sysTime: string;
-}) {
+}) => {
   const { t } = useTranslation();
   // const globalState = useSelector((state) => state.global);
   // const { sysTime } = globalState;
@@ -50,7 +50,7 @@ export function SearchDateTimeRangePicker({
   const shortcutsItems = useMemo(
     () => [
       {
-        label: t('cp.today'),
+        label: t('lib.today'),
         getValue: () => {
           const dateRange = getDateRange(sysTime, 'today');
           setstartValue(dateRange[0]);
@@ -58,7 +58,7 @@ export function SearchDateTimeRangePicker({
         },
       },
       {
-        label: t('cp.yesterday'),
+        label: t('lib.yesterday'),
         getValue: () => {
           const dateRange = getDateRange(sysTime, 'yesterday');
           setstartValue(dateRange[0]);
@@ -66,7 +66,7 @@ export function SearchDateTimeRangePicker({
         },
       },
       {
-        label: t('cp.thisWeek'),
+        label: t('lib.thisWeek'),
         getValue: () => {
           const dateRange = getDateRange(sysTime, 'thisWeek');
           setstartValue(dateRange[0]);
@@ -74,7 +74,7 @@ export function SearchDateTimeRangePicker({
         },
       },
       {
-        label: t('cp.lastWeek'),
+        label: t('lib.lastWeek'),
         getValue: () => {
           const dateRange = getDateRange(sysTime, 'lastWeek');
           setstartValue(dateRange[0]);
@@ -82,7 +82,7 @@ export function SearchDateTimeRangePicker({
         },
       },
       {
-        label: t('cp.pass7Days'),
+        label: t('lib.pass7Days'),
         getValue: () => {
           const dateRange = getDateRange(sysTime, 'pass7Days');
           setstartValue(dateRange[0]);
@@ -150,7 +150,7 @@ export function SearchDateTimeRangePicker({
   const startComp = useCallback(() => {
     return (
       <MemoizedCustomizedDateTimePicker
-        label={placeholderI18nKey ? `${t(placeholderI18nKey)}-${t('sys.start')}` : t('sys.start')}
+        label={placeholderI18nKey ? `${t(placeholderI18nKey)}-${t('lib.start')}` : t('lib.start')}
         views={views}
         format={format}
         maxDate={dayjs()}
@@ -162,7 +162,7 @@ export function SearchDateTimeRangePicker({
   const endComp = useCallback(() => {
     return (
       <MemoizedCustomizedDateTimePicker
-        label={placeholderI18nKey ? `${t(placeholderI18nKey)}-${t('sys.end')}` : t('sys.end')}
+        label={placeholderI18nKey ? `${t(placeholderI18nKey)}-${t('lib.end')}` : t('lib.end')}
         views={views}
         format={format}
         minDate={startValue}
@@ -177,7 +177,7 @@ export function SearchDateTimeRangePicker({
       <LocalizationProvider
         dateAdapter={AdapterDayjs}
         adapterLocale={lang}
-        localeText={{ okButtonLabel: t('sys.confirm'), cancelButtonLabel: t('sys.cancel') }}
+        localeText={{ okButtonLabel: t('lib.confirm'), cancelButtonLabel: t('lib.cancel') }}
       >
         <MultiInputDateTimeRangeField
           slotProps={{
@@ -207,4 +207,5 @@ export function SearchDateTimeRangePicker({
       )}
     </FormControl>
   );
-}
+};
+export default React.memo(SearchDateTimeRangePicker);

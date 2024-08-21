@@ -5,8 +5,8 @@ export default function ActionList(props: PickersActionBarProps) {
   const { t } = useTranslation();
   const { onClear, onCancel } = props;
   const actions = [
-    { i18nKey: 'sys.clear', type: 'Clear', method: onClear },
-    { i18nKey: 'sys.cancel', type: 'Cancel', method: onCancel },
+    { i18nKey: 'lib.clear', type: 'Clear', method: onClear },
+    { i18nKey: 'lib.cancel', type: 'Cancel', method: onCancel },
   ];
   return (
     <Grid container p={2} spacing={2} justifyContent="right">

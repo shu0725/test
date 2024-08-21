@@ -1,0 +1,15 @@
+{
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "thisWeek": "This Week",
+  "lastWeek": "Last Week",
+  "pass7Days": "Past 7 Days",
+  "thisMonth": "This Month",
+  "lastMonth": "Last Month",
+  "creditThisMonth": "This Month",
+  "creditLastMonth": "Last Month",
+  "start": "Start",
+  "end": "End",
+  "confirm": "Confirm",
+  "cancel": "Cancel"
+}
