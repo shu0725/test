@@ -14,6 +14,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/zh-tw';
 import 'dayjs/locale/en';
 import 'dayjs/locale/vi';
+import useMuiLang from '@hooks/useMuiLang';
 
 const SearchDateTimeRangePicker = ({
   showShortcutsItems = true,
@@ -39,53 +40,49 @@ const SearchDateTimeRangePicker = ({
   sysTime: string;
 }) => {
   const { t } = useTranslation();
-  // const globalState = useSelector((state) => state.global);
-  // const { sysTime } = globalState;
-  const { i18n } = useTranslation();
-  const currentLanguage = i18n.language;
-  const [lang, setLang] = useState<string | undefined>(currentLanguage);
-  const [startValue, setstartValue] = useState<Dayjs | null>(null);
-  const [endValue, setendValue] = useState<Dayjs | null>(null);
+  const [muiLang] = useMuiLang();
+  const [startValue, setStartValue] = useState<Dayjs | null>(null);
+  const [endValue, setEndValue] = useState<Dayjs | null>(null);
   const shortcutsItems = useMemo(
     () => [
       {
         label: t('lib.today'),
         getValue: () => {
           const dateRange = getDateRange(sysTime, 'today');
-          setstartValue(dateRange[0]);
-          setendValue(dateRange[1]);
+          setStartValue(dateRange[0]);
+          setEndValue(dateRange[1]);
         },
       },
       {
         label: t('lib.yesterday'),
         getValue: () => {
           const dateRange = getDateRange(sysTime, 'yesterday');
-          setstartValue(dateRange[0]);
-          setendValue(dateRange[1]);
+          setStartValue(dateRange[0]);
+          setEndValue(dateRange[1]);
         },
       },
       {
         label: t('lib.thisWeek'),
         getValue: () => {
           const dateRange = getDateRange(sysTime, 'thisWeek');
-          setstartValue(dateRange[0]);
-          setendValue(dateRange[1]);
+          setStartValue(dateRange[0]);
+          setEndValue(dateRange[1]);
         },
       },
       {
         label: t('lib.lastWeek'),
         getValue: () => {
           const dateRange = getDateRange(sysTime, 'lastWeek');
-          setstartValue(dateRange[0]);
-          setendValue(dateRange[1]);
+          setStartValue(dateRange[0]);
+          setEndValue(dateRange[1]);
         },
       },
       {
         label: t('lib.pass7Days'),
         getValue: () => {
           const dateRange = getDateRange(sysTime, 'pass7Days');
-          setstartValue(dateRange[0]);
-          setendValue(dateRange[1]);
+          setStartValue(dateRange[0]);
+          setEndValue(dateRange[1]);
         },
       },
     ],
@@ -94,10 +91,10 @@ const SearchDateTimeRangePicker = ({
 
   useEffect(() => {
     if (dayjs(start).isValid()) {
-      setstartValue(dayjs(start));
+      setStartValue(dayjs(start));
     }
     if (dayjs(end).isValid()) {
-      setendValue(dayjs(end));
+      setEndValue(dayjs(end));
     }
   }, []);
 
@@ -114,37 +111,21 @@ const SearchDateTimeRangePicker = ({
       setValue(endKey, dayjs(endValue).format('YYYY-MM-DD HH:mm:ss'));
     }
   }, [startValue, endValue]);
-  console.error('aaa', currentLanguage);
-  useEffect(() => {
-    console.error('bbb', currentLanguage);
-
-    switch (currentLanguage) {
-      case 'en':
-        setLang('en');
-        break;
-      case 'vi':
-        setLang('vi');
-        break;
-      default:
-        setLang('zh-tw');
-        break;
-    }
-  }, [currentLanguage]);
 
   const MemoizedCustomizedDateTimePicker = React.memo(CustomizedDateTimePicker);
 
   const handleStartChange = useCallback(
     (newValue: Dayjs | null) => {
-      setstartValue(newValue);
+      setStartValue(newValue);
     },
-    [setstartValue],
+    [setStartValue],
   );
 
   const handleEndChange = useCallback(
     (newValue: Dayjs | null) => {
-      setendValue(newValue);
+      setEndValue(newValue);
     },
-    [setendValue],
+    [setEndValue],
   );
   const startComp = useCallback(() => {
     return (
@@ -158,6 +139,7 @@ const SearchDateTimeRangePicker = ({
       />
     );
   }, [startValue, endValue, handleStartChange]);
+
   const endComp = useCallback(() => {
     return (
       <MemoizedCustomizedDateTimePicker
@@ -175,7 +157,7 @@ const SearchDateTimeRangePicker = ({
     <FormControl fullWidth>
       <LocalizationProvider
         dateAdapter={AdapterDayjs}
-        adapterLocale={lang}
+        adapterLocale={muiLang}
         localeText={{ okButtonLabel: t('lib.confirm'), cancelButtonLabel: t('lib.cancel') }}
       >
         <MultiInputDateTimeRangeField
