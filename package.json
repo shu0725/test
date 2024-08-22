@@ -2,8 +2,9 @@
   "name": "@shu0725/test",
   "author": "shu",
   "private": false,
-  "version": "1.1.21",
+  "version": "1.1.22",
   "type": "module",
+  "module": "./dist/lib/main.js",
   "publishConfig": {
     "access": "public"
   },
@@ -21,9 +22,6 @@
       "types": "./dist/langs/index.d.ts"
     }
   },
-  "files": [
-    "dist"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shu0725/test.git"
