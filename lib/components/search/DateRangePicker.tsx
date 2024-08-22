@@ -23,7 +23,7 @@ import React from 'react';
 import useMuiLang from '@src/hooks/useMuiLang';
 
 const SearchDateRangePicker = ({
-  placeholder,
+  placeholder = '',
   disabled,
   defaultType = 'null',
   start,

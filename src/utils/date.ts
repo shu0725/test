@@ -154,3 +154,4 @@ export const getDateRange = (sysTime: string | null, dayType: dayType) => {
       return [dayjs(''), dayjs('')];
   }
 };
+export default getDateRange;
