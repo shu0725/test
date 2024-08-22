@@ -1,11 +1,13 @@
 import { defineConfig } from 'vite';
-import { extname, relative, resolve } from 'path';
 import { fileURLToPath } from 'node:url';
+import { resolve, dirname } from 'node:path';
+
 import { glob } from 'glob';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import * as path from 'path';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,8 +15,15 @@ export default defineConfig({
   build: {
     copyPublicDir: false,
     lib: {
-      entry: resolve(__dirname, 'lib/main.ts'),
+      entry: {
+        components: path.resolve(__dirname, 'lib/components/index.ts'),
+        utils: path.resolve(__dirname, 'lib/utils/index.ts'),
+        langs: path.resolve(__dirname, 'lib/langs/index.ts'),
+      },
       formats: ['es'],
+      fileName: (format, name) => {
+        return format === 'cjs' ? `${name}.cjs` : `${name}.js`;
+      },
     },
     rollupOptions: {
       external: [
@@ -27,17 +36,19 @@ export default defineConfig({
         '@emotion/styled',
         'react-i18next',
       ],
-      input: Object.fromEntries(
-        // https://rollupjs.org/configuration-options/#input
-        glob.sync('lib/**/*.{ts,tsx}').map((file) => [
-          // 1. The name of the entry point
-          // lib/nested/foo.js becomes nested/foo
-          relative('lib', file.slice(0, file.length - extname(file).length)),
-          // 2. The absolute path to the entry file
-          // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
-          fileURLToPath(new URL(file, import.meta.url)),
-        ]),
-      ),
+      // input: glob.sync('lib/**/*.{ts,tsx}', { ignore: 'lib/**/*.stories.tsx' }),
+
+      // input: Object.fromEntries(
+      //   // https://rollupjs.org/configuration-options/#input
+      //   glob.sync('lib/**/*.{ts,tsx}').map((file) => [
+      //     // 1. The name of the entry point
+      //     // lib/nested/foo.js becomes nested/foo
+      //     relative('lib', file.slice(0, file.length - extname(file).length)),
+      //     // 2. The absolute path to the entry file
+      //     // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
+      //     fileURLToPath(new URL(file, import.meta.url)),
+      //   ]),
+      // ),
       output: {
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: '[name].js',
