@@ -2,7 +2,7 @@
   "name": "@shu0725/test",
   "author": "shu",
   "private": false,
-  "version": "1.1.23",
+  "version": "1.1.24",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -10,15 +10,15 @@
   "exports": {
     "./components": {
       "import": "./dist/components.js",
-      "types": "./dist/components/index.d.ts"
+      "types": "./dist/lib/components/index.d.ts"
     },
     "./utils": {
       "import": "./dist/utils.js",
-      "types": "./dist/utils/index.d.ts"
+      "types": "./dist/lib/utils/index.d.ts"
     },
     "./langs": {
       "import": "./dist/langs.js",
-      "types": "./dist/langs/index.d.ts"
+      "types": "./dist/lib/langs/index.d.ts"
     }
   },
   "files": [
