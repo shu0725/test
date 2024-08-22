@@ -24,9 +24,9 @@ export default defineConfig({
         langs: './lib/langs/index.ts',
       },
       formats: ['es'],
-      fileName: (format, name) => {
-        return format === 'cjs' ? `${name}.cjs` : `${name}.js`;
-      },
+      // fileName: (format, name) => {
+      //   return format === 'cjs' ? `${name}.cjs` : `${name}.js`;
+      // },
     },
     rollupOptions: {
       external: [
