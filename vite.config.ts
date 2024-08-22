@@ -14,11 +14,14 @@ export default defineConfig({
   plugins: [react(), dts()],
   build: {
     copyPublicDir: false,
+    emptyOutDir: false,
+    outDir: 'dist',
+    sourcemap: true,
     lib: {
       entry: {
-        components: path.resolve(__dirname, 'lib/components/index.ts'),
-        utils: path.resolve(__dirname, 'lib/utils/index.ts'),
-        langs: path.resolve(__dirname, 'lib/langs/index.ts'),
+        components: './lib/components/index.ts',
+        utils: './lib/utils/index.ts',
+        langs: './lib/langs/index.ts',
       },
       formats: ['es'],
       fileName: (format, name) => {
