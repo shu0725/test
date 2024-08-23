@@ -2,7 +2,7 @@
   "name": "@shu0725/test",
   "author": "shu",
   "private": false,
-  "version": "1.1.38",
+  "version": "1.1.39",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -23,11 +23,7 @@
     "./styles": "./dist/assets/style.css"
   },
   "files": [
-    "dist",
-    "assets/**/*.scss",
-    "assets",
-    "lib/styles/**/*.scss",
-    "lib/styles"
+    "dist"
   ],
   "repository": {
     "type": "git",

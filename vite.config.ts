@@ -11,6 +11,10 @@ export default defineConfig({
     emptyOutDir: false,
     outDir: 'dist',
     sourcemap: true,
+    minify: 'terser',
+    cssMinify: true,
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 5000, //chunk 大小警告的限制
     lib: {
       entry: {
         components: './lib/components/index.ts',
