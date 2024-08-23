@@ -15,6 +15,19 @@ export type dayType =
   | 'creditThisMonth'
   | 'creditLastMonth';
 
+// Define an array of the possible values for runtime checks
+// creditThisMonth, creditLastMonth只用於邏輯判斷不需要顯示
+export const dayTypeValues: dayType[] = [
+  'null',
+  'today',
+  'yesterday',
+  'thisWeek',
+  'lastWeek',
+  'pass7Days',
+  'thisMonth',
+  'lastMonth',
+];
+
 export const getDateRange = (sysTime: string | null, dayType: dayType) => {
   const now = dayjs(sysTime);
   const elevenAM = now.hour(11).minute(59).second(59);

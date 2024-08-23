@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getDateRange, dayType } from '@utils/date';
+import { getDateRange, dayType, dayTypeValues } from '@utils/date';
 // material-ui
 import { FormControl } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -21,6 +21,8 @@ import 'dayjs/locale/en';
 import 'dayjs/locale/vi';
 import React from 'react';
 import useMuiLang from '@src/hooks/useMuiLang';
+import PropTypes from 'prop-types';
+import '@components/dateTimePicker/index.scss';
 
 const SearchDateRangePicker = ({
   placeholder = '',
@@ -31,7 +33,7 @@ const SearchDateRangePicker = ({
   startKey,
   endKey,
   setValue,
-  sysTime = dayjs().format('YYYY-MM-DD HH:mm:ss'),
+  sysTime = dayjs().format('YYYY-MM-DD'),
 }: {
   placeholder: string;
   disabled?: boolean;
@@ -48,33 +50,30 @@ const SearchDateRangePicker = ({
   const [changeImportance, setChangeImportance] =
     useState<PickerShortcutChangeImportance>('accept');
   const [dateValue, setdateValue] = useState<DateRange<Dayjs>>([dayjs(start), dayjs(end)]);
-  const shortcutsItems: PickersShortcutsItem<DateRange<Dayjs>>[] = [
-    'today',
-    'yesterday',
-    'thisWeek',
-    'lastWeek',
-    'pass7Days',
-    'thisMonth',
-    'lastMonth',
-  ].map((type: string) => ({
-    label: t(`lib.${type}`),
-    getValue: () => {
-      const date = getDateRange(sysTime, type as dayType);
-      return [date[0], date[1]];
-    },
-  }));
+  const shortcutsItems: PickersShortcutsItem<DateRange<Dayjs>>[] = dayTypeValues.map(
+    (type: string) => ({
+      label: t(`lib.${type}`),
+      getValue: () => {
+        const date = getDateRange(sysTime, type as dayType);
+        return [date[0], date[1]];
+      },
+    }),
+  );
 
-  const fcSetValues = (dateAry: Dayjs[]) => {
-    setdateValue([dateAry[0], dateAry[1]]);
-    setValue(startKey, dateAry[0].format('YYYY-MM-DD'));
-    setValue(endKey, dateAry[1].format('YYYY-MM-DD'));
-  };
+  const fcSetValues = useCallback(
+    (dateAry: Dayjs[]) => {
+      setdateValue([dateAry[0], dateAry[1]]);
+      setValue(startKey, dateAry[0].format('YYYY-MM-DD'));
+      setValue(endKey, dateAry[1].format('YYYY-MM-DD'));
+    },
+    [endKey, setValue, startKey],
+  );
 
   useEffect(() => {
     if (defaultType === 'null') return;
     const dateAry = getDateRange(sysTime, defaultType);
     fcSetValues(dateAry);
-  }, []);
+  }, [defaultType, fcSetValues, sysTime]);
 
   return (
     <FormControl fullWidth>
@@ -127,5 +126,64 @@ const SearchDateRangePicker = ({
       </LocalizationProvider>
     </FormControl>
   );
+};
+
+SearchDateRangePicker.propTypes = {
+  /**
+   * Placeholder text for the date range picker input
+   */
+  placeholder: PropTypes.string,
+
+  /**
+   * Boolean to indicate if the date range picker is disabled
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * Default type for the date range picker
+   */
+  defaultType: PropTypes.oneOf(dayTypeValues),
+
+  /**
+   * Default start date value (required)
+   */
+  start: PropTypes.string.isRequired,
+
+  /**
+   * Default end date value (required)
+   */
+  end: PropTypes.string.isRequired,
+
+  /**
+   * Key for the start date (required)
+   */
+  startKey: PropTypes.string.isRequired,
+
+  /**
+   * Key for the end date (required)
+   */
+  endKey: PropTypes.string.isRequired,
+
+  /**
+   * 設定父層state值(required)
+   */
+  setValue: PropTypes.func.isRequired,
+
+  /**
+   * 後端傳來的系統時間
+   */
+  sysTime: PropTypes.string,
+};
+
+SearchDateRangePicker.defaultProps = {
+  placeholder: '',
+  disabled: false,
+  defaultType: 'null',
+  sysTime: dayjs().format('YYYY-MM-DD'),
+  start: '',
+  end: '',
+  startKey: 'startDate',
+  endKey: 'endDate',
+  setValue: (key: string, value: string) => console.log(key, value),
 };
 export default React.memo(SearchDateRangePicker);

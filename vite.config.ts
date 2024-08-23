@@ -7,7 +7,6 @@ import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import * as path from 'path';
-// const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,9 +23,6 @@ export default defineConfig({
         langs: './lib/langs/index.ts',
       },
       formats: ['es'],
-      // fileName: (format, name) => {
-      //   return format === 'cjs' ? `${name}.cjs` : `${name}.js`;
-      // },
     },
     rollupOptions: {
       external: [
@@ -38,6 +34,8 @@ export default defineConfig({
         '@mui/styles',
         '@emotion/styled',
         'react-i18next',
+        '**/*.stories.*', // Exclude all story files
+        '**/.storybook/**', // Exclude Storybook configuration folder
       ],
       // input: glob.sync('lib/**/*.{ts,tsx}', { ignore: 'lib/**/*.stories.tsx' }),
 

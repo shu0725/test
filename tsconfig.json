@@ -40,6 +40,9 @@
     }
   },
   "include": ["src", "lib"],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules",
+    "**/*.stories.tsx" // Exclude all .stories.tsx files
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
