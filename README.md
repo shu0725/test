@@ -1,3 +1,10 @@
+## Consuming project steps
+
+- Need to import style.css in the root component of the project
+  ```sh
+  $ import 'my-library/dist/style.css'; // Import the built CSS file
+  ```
+
 ## Publishing to npm
 
 We are finally ready to publish our component to npm. Here is our publishing checklist:
