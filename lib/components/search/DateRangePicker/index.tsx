@@ -22,8 +22,7 @@ import 'dayjs/locale/vi';
 import React from 'react';
 import useMuiLang from '@src/hooks/useMuiLang';
 import PropTypes from 'prop-types';
-// import '@components/dateTimePicker/index.scss';
-import './index.scss';
+import '@components/dateTimePicker/index.scss';
 
 const SearchDateRangePicker = ({
   placeholder = '',

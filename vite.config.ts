@@ -2,11 +2,17 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import * as path from 'path';
-import css from 'rollup-plugin-css-only';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), dts()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "src/components/dateTimePicker/index.scss";`, // Uncomment this line if you have global SCSS variables to include in every file
+      },
+    },
+  },
   build: {
     copyPublicDir: false,
     emptyOutDir: false,
@@ -37,9 +43,6 @@ export default defineConfig({
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: '[name].js',
       },
-      plugins: [
-        css({ output: 'style.css' }), // This extracts all CSS to a separate file
-      ],
     },
   },
   resolve: {
