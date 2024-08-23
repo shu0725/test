@@ -3,7 +3,7 @@
 - Need to import `style.css` in the root component of the project
 
   ```sh
-  $ import 'my-library/dist/style.css'; // Import the built CSS file
+  $ import '@shu0725/test/styles'; // Import the built CSS file
   ```
 
 ## Publishing to npm

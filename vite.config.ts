@@ -10,8 +10,7 @@ export default defineConfig({
     copyPublicDir: false,
     emptyOutDir: false,
     outDir: 'dist',
-    sourcemap: true,
-    minify: 'terser',
+    minify: true,
     cssMinify: true,
     reportCompressedSize: true,
     chunkSizeWarningLimit: 5000, //chunk 大小警告的限制
