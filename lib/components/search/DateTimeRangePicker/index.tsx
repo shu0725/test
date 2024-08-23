@@ -6,7 +6,7 @@ import { FormControl, Button } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import CustomizedDateTimePicker from '../../../src/components/dateTimePicker';
+import CustomizedDateTimePicker from '../../../../src/components/dateTimePicker';
 import { MultiInputDateTimeRangeField } from '@mui/x-date-pickers-pro/MultiInputDateTimeRangeField';
 // custom
 import { isMobile } from 'react-device-detect';
