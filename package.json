@@ -2,7 +2,7 @@
   "name": "@shu0725/test",
   "author": "shu",
   "private": false,
-  "version": "1.1.36",
+  "version": "1.1.37",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -20,12 +20,12 @@
       "import": "./dist/langs.js",
       "types": "./dist/lib/langs/index.d.ts"
     },
-    "./styles": {
-      "scss": "./dist/assets/style.css"
-    }
+    "./styles": "./dist/assets"
   },
   "files": [
     "dist",
+    "assets/**/*.scss",
+    "assets",
     "lib/styles/**/*.scss",
     "lib/styles"
   ],
