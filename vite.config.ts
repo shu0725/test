@@ -1,11 +1,6 @@
 import { defineConfig } from 'vite';
-import { fileURLToPath } from 'node:url';
-import { resolve, dirname } from 'node:path';
-
-import { glob } from 'glob';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
-import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import * as path from 'path';
 
 // https://vitejs.dev/config/
@@ -37,26 +32,9 @@ export default defineConfig({
         '**/*.stories.*', // Exclude all story files
         '**/.storybook/**', // Exclude Storybook configuration folder
       ],
-      // input: glob.sync('lib/**/*.{ts,tsx}', { ignore: 'lib/**/*.stories.tsx' }),
-
-      // input: Object.fromEntries(
-      //   // https://rollupjs.org/configuration-options/#input
-      //   glob.sync('lib/**/*.{ts,tsx}').map((file) => [
-      //     // 1. The name of the entry point
-      //     // lib/nested/foo.js becomes nested/foo
-      //     relative('lib', file.slice(0, file.length - extname(file).length)),
-      //     // 2. The absolute path to the entry file
-      //     // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
-      //     fileURLToPath(new URL(file, import.meta.url)),
-      //   ]),
-      // ),
       output: {
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: '[name].js',
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
       },
     },
   },
@@ -71,10 +49,7 @@ export default defineConfig({
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@config': path.resolve(__dirname, './config'),
       '@contexts': path.resolve(__dirname, 'src/contexts'),
-      '@router': path.resolve(__dirname, 'src/router'),
       '@components': path.resolve(__dirname, 'src/components'),
-      '@layout': path.resolve(__dirname, 'src/layout'),
-      '@pages': path.resolve(__dirname, 'src/pages'),
       '@lib': path.resolve(__dirname, './lib'),
     },
   },
