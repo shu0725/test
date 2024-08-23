@@ -18,7 +18,6 @@ export type dayType =
 // Define an array of the possible values for runtime checks
 // creditThisMonth, creditLastMonth只用於邏輯判斷不需要顯示
 export const dayTypeValues: dayType[] = [
-  'null',
   'today',
   'yesterday',
   'thisWeek',
