@@ -6,13 +6,6 @@ import * as path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), dts()],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "src/components/dateTimePicker/index.scss";`, // Uncomment this line if you have global SCSS variables to include in every file
-      },
-    },
-  },
   build: {
     copyPublicDir: false,
     emptyOutDir: false,
