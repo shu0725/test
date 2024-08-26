@@ -2,7 +2,7 @@
   "name": "@shu0725/test",
   "author": "shu",
   "private": false,
-  "version": "1.1.41",
+  "version": "1.1.42",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -31,15 +31,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "dev:pwa": "vite --mode pwa",
-    "build:pwa": "vite build --mode pwa",
-    "build": "rimraf dist && tsc --p ./tsconfig-build.json && vite build",
-    "devbuild": "tsc && vite build",
+    "build": "tsc --p ./tsconfig-build.json && vite build",
     "serve": "vite preview",
-    "async": "node ./commands/asyncRG.js",
-    "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
-    "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
-    "lint": "yarn lint:format && yarn lint:fix ",
     "type-check": "tsc",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

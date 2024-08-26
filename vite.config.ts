@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react(), dts()],
   build: {
     copyPublicDir: false,
-    emptyOutDir: false,
+    emptyOutDir: true,
     outDir: 'dist',
     minify: true,
     cssMinify: true,
