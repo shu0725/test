@@ -1,10 +1,23 @@
-## Consuming project steps
+## Steps to Consume the npm Module
 
-- Need to import `style.css` in the root component of the project
+1. **Import the CSS Styles in the Root Component**
 
-  ```sh
-  $ import '@shu0725/test/styles'; // Import the built CSS file
-  ```
+   To apply the styles from the npm module throughout your project, add the following import statement in your root component (e.g., `index.js` or `App.js`):
+
+   ```javascript
+   import '@shu0725/test/styles'; // Import the built CSS file
+   ```
+
+2. **Configure TypeScript for Module Resolution**
+
+   Update your tsconfig.json file to use the bundler module resolution strategy. Your tsconfig.json should include:
+
+   ```json
+   "compilerOptions": {
+     // Other options...
+     "moduleResolution": "bundler"
+   }
+   ```
 
 ## Publishing to npm
 
