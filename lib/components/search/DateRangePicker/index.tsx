@@ -16,9 +16,7 @@ import {
 import { CalendarOutlined, CloseOutlined } from '@ant-design/icons';
 // custom
 import dayjs, { Dayjs } from 'dayjs';
-import 'dayjs/locale/zh-tw';
-import 'dayjs/locale/en';
-import 'dayjs/locale/vi';
+
 import React from 'react';
 import useMuiLang from '@src/hooks/useMuiLang';
 import PropTypes from 'prop-types';
