@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
+import 'dayjs/locale/zh-tw';
+import 'dayjs/locale/en';
+import 'dayjs/locale/vi';
 // ----------------------------------------------------------------------
 
 export default function useMuiLang() {
