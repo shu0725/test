@@ -11,9 +11,7 @@ import { MultiInputDateTimeRangeField } from '@mui/x-date-pickers-pro/MultiInput
 // custom
 import { isMobile } from 'react-device-detect';
 import dayjs, { Dayjs } from 'dayjs';
-import 'dayjs/locale/zh-tw';
-import 'dayjs/locale/en';
-import 'dayjs/locale/vi';
+
 import useMuiLang from '@hooks/useMuiLang';
 
 const SearchDateTimeRangePicker = ({
