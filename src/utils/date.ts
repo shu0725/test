@@ -32,6 +32,9 @@ export const dayTypeValues: dayType[] = [
 
 export const getDateRange = (sysTime: string | null, dayType: dayType) => {
   const now = dayjs().tz(import.meta.env.VITE_Time_Zone);
+  console.error(import.meta.env.VITE_Time_Zone, 'Time_Zone');
+
+  console.error(now.format('YYYY-MM-DD HH:mm:ss'), 'time');
   const elevenAM = now.hour(11).minute(59).second(59);
   const today = now.isBefore(elevenAM) ? now.subtract(1, 'day') : now;
   const lastMonthFirstMonday = () => {
