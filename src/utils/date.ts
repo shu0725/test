@@ -1,8 +1,11 @@
 import dayjs from 'dayjs';
 import weekday from 'dayjs/plugin/weekday';
-
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 dayjs.extend(weekday);
 dayjs.Ls['en'].weekStart = 1;
+dayjs.extend(utc);
+dayjs.extend(timezone);
 export type dayType =
   | 'null'
   | 'today'
@@ -28,7 +31,7 @@ export const dayTypeValues: dayType[] = [
 ];
 
 export const getDateRange = (sysTime: string | null, dayType: dayType) => {
-  const now = dayjs(sysTime);
+  const now = dayjs().tz(import.meta.env.VITE_Time_Zone);
   const elevenAM = now.hour(11).minute(59).second(59);
   const today = now.isBefore(elevenAM) ? now.subtract(1, 'day') : now;
   const lastMonthFirstMonday = () => {
